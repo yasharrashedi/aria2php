@@ -15,4 +15,4 @@ This is a good idead to use no-ip.com linux software if you don't have a static 
 
 known issues
 ===============================================
-Save Session does't work although it usese commands that is described in aria2 documenation. (aria2.saveSession)
+Save Session doesn't work although it uses commands described in aria2 documentation. (aria2.saveSession)
