@@ -8,6 +8,7 @@ Inside the project files there is a RPI_CONFIG directory that contains sample ar
 
 This is a good idead to use no-ip.com linux software if you don't have a static IP.
 
+set username and password (needed for login) in config.php file
 
 ![Screentshot](https://raw.githubusercontent.com/yasharrashedi/aria2php/master/screenshot.png "Screentshot")
 
