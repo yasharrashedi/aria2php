@@ -17,3 +17,8 @@ set username and password (needed for login) in config.php file
 known issues
 ===============================================
 Save Session doesn't work although it uses commands described in aria2 documentation. (aria2.saveSession)
+
+
+License
+===============================================
+MIT License. Refer to the LICENSE file.
