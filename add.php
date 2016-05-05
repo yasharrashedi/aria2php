@@ -7,7 +7,7 @@ if(!isset($_SESSION['user'])){
 }
 
 if(!empty($_POST['uri'])){
-$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc');
+$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc',SECRET);
   try{
     $response = $client->execute('aria2.addUri',array(array($_POST['uri'])));
   }catch (Exception $e){
