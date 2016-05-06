@@ -7,7 +7,7 @@ if(!isset($_SESSION['user'])){
 }
 
 if(!empty($_POST['uri'])){
-$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc');
+$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc',SECRET);
   try{
     $response = $client->execute('aria2.addUri',array(array($_POST['uri'])));
   }catch (Exception $e){
@@ -39,7 +39,7 @@ if(!empty($_FILES['torrent'])) {
   if (move_uploaded_file($_FILES['torrent']['tmp_name'], $uploadfile)) {
     $torrentContent = base64_encode(file_get_contents($uploadfile));
 //    die($torrentContent);
-    $client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc');
+    $client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc',SECRET);
     try{
       $response = $client->execute('aria2.addTorrent',array($torrentContent));
     }catch (Exception $e){

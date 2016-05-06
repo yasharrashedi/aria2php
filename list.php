@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
 require_once "Client.php";
-$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc');
+$client = new \JsonRPC\Client('http://'.HOST.':'.PORT.'/jsonrpc',SECRET);
 
 
 if(!isset($_GET['type'])){

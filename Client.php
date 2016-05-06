@@ -23,6 +23,14 @@ class Client
      */
     private $url;
 
+	/**
+     * secret token of the server
+     *
+     * @access private
+     * @var string
+     */
+	private $secret;
+	
     /**
      * HTTP client timeout
      *
@@ -91,9 +99,10 @@ class Client
      * @param  integer   $timeout     Server URL
      * @param  array     $headers     Custom HTTP headers
      */
-    public function __construct($url, $timeout = 5, $headers = array())
+    public function __construct($url, $secret, $timeout = 5, $headers = array())
     {
         $this->url = $url;
+		$this->secret = $secret;
         $this->timeout = $timeout;
         $this->headers = array_merge($this->headers, $headers);
     }
@@ -193,7 +202,7 @@ class Client
             'method' => $procedure,
             'id' => mt_rand()
         );
-
+		
         if (! empty($params)) {
             $payload['params'] = $params;
         }
@@ -293,6 +302,10 @@ class Client
         if ($this->username && $this->password) {
             curl_setopt($ch, CURLOPT_USERPWD, $this->username.':'.$this->password);
         }
+		
+		if ($this->secret) {
+			curl_setopt($ch, CURLOPT_USERPWD, ':'.$this->secret);
+		}
 
         $http_body = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
