@@ -183,7 +183,7 @@ class Client
         }
 
         return $this->parseResponse(
-            $this->doRequest($this->prepareRequest($procedure, $params))
+        		$this->doRequest($this->prepareRequest($procedure, $params),$procedure)
         );
     }
 
@@ -285,7 +285,7 @@ class Client
      * @access public
      * @param  string   $payload   Data to send
      */
-    public function doRequest($payload)
+    public function doRequest($payload,$procedure)
     {
         $ch = curl_init();
 
@@ -317,8 +317,23 @@ class Client
         $response = json_decode($http_body, true);
 
         if ($this->debug) {
-            error_log('==> Request: '.PHP_EOL.json_encode($payload, JSON_PRETTY_PRINT));
-            error_log('==> Response: '.PHP_EOL.json_encode($response, JSON_PRETTY_PRINT));
+//             error_log('==> Request: '.PHP_EOL.json_encode($payload, JSON_PRETTY_PRINT));
+//             error_log('==> Response: '.PHP_EOL.json_encode($response, JSON_PRETTY_PRINT));
+        	
+        	error_log('=================================\n==>url='.$this->url);
+        	error_log('==> '.print_r($procedure,1).' Request: '.PHP_EOL.json_encode($payload, JSON_PRETTY_PRINT));
+        	error_log('==> '.print_r($procedure,1).' Response: '.PHP_EOL.json_encode($response, JSON_PRETTY_PRINT));
+        	print_r($http_body);
+        	//if ($procedure == 'aria2.tellStopped') {
+        	//	if(isset($response)){
+        	//		$resultArray = $response['result'];
+        	//		foreach ($resultArray as $resultObj){
+        	//			$gid = $resultObj['gid'];
+        	//			$uri = $resultObj['files'][0]['path'];
+        	//			error_log("gid=".$gid." path=".$uri);
+        	//		}
+        	//	}
+        	//}
         }
 
         curl_close($ch);
