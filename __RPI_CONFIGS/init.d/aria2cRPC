@@ -1,6 +1,6 @@
 #! /bin/sh
 # /etc/init.d/aria2cRPC
-
+ 
 ### BEGIN INIT INFO
 # Provides: aria2cRPC
 # Required-Start: $network $local_fs $remote_fs
@@ -10,20 +10,20 @@
 # Short-Description: aria2c RPC init script.
 # Description: Starts and stops aria2 RPC services.
 ### END INIT INFO
-
+ 
 #VAR
 RUN="/usr/bin/aria2c"
 ARIA_PID=$(ps ux | awk '/aria2c --enable-rpc/ && !/awk/ {print $2}')
-
+ 
 # Some things that run always
 touch /var/lock/aria2cRPC
-
+ 
 # Carry out specific functions when asked to by the system
 case "$1" in
 start)
 echo "Starting script aria2cRPC "
 if [ -z "$ARIA_PID" ]; then
-nohup /home/www/aria2php/__RPI_CONFIGS/startAria2.sh &
+nohup $RUN --enable-rpc=true --rpc-listen-all=true -D --conf-path=/root/.aria2/aria2.conf
 echo "Started"
 else
 echo "aria2cRPC already started"
@@ -48,5 +48,5 @@ echo "Usage: /etc/init.d/aria2cRPC {start|stop|status}"
 exit 1
 ;;
 esac
-
+ 
 exit 0
