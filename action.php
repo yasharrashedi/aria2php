@@ -25,7 +25,7 @@ if($_GET['action'] == 'pause') {
 			}
 			if($status['status'] == 'complete') {
 				$client->execute ( 'aria2.removeDownloadResult', array($_GET['gid']) );
-			}else if($status['status'] == 'failed') {
+			}else if($status['status'] == 'failed' || $status['status'] == 'error') {
 				$client->execute ( 'aria2.removeDownloadResult', array($_GET['gid']) );
 			}else {
 				$client->execute ( 'aria2.forceRemove', array($_GET['gid']) );
@@ -45,7 +45,7 @@ if($_GET['action'] == 'pause') {
 		}
 		if($status['status'] == 'complete') {
 			$client->execute ( 'aria2.removeDownloadResult', array($_GET['gid']) );
-		}else if($status['status'] == 'failed') {
+		}else if($status['status'] == 'failed'|| $status['status'] == 'error') {
 			$client->execute ( 'aria2.removeDownloadResult', array($_GET['gid']) );
 			if($rmpath != null) {
 				unlink ( $rmpath );
