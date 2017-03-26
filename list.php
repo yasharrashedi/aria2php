@@ -1,4 +1,5 @@
 <?php
+require_once "webmastconfig.php";
 require_once "config.php";
 require_once "Client.php";
 $client = new \JsonRPC\Client ( 'http://' . HOST . ':' . PORT . '/jsonrpc', SECRET );
