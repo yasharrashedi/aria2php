@@ -31,7 +31,7 @@ if($_GET['action'] == 'pause') {
 				$client->execute ( 'aria2.forceRemove', array($_GET['gid']) );
 			}
 			if($rmpath != null) {
-				print_r ( 'unlink ' . unlink ( $rmpath ) );
+				 unlink ( $rmpath );
 			}
 		}
 	}
