@@ -1,4 +1,5 @@
 <?php
+require_once "webmastconfig.php";
 require_once "config.php";
 if(isset($_GET['logout'])){
   unset($_SESSION['user']);
@@ -6,7 +7,8 @@ if(isset($_GET['logout'])){
 }
 
 if(!empty($_POST)){
-
+	//error_log('Request user='.$_POST['user']." pwd=".$_POST['pass']);
+ 	//error_log('Define  user='.GUI_USERNAME." pwd=".GUI_PASSWORD);
   if($_POST['user']== GUI_USERNAME && $_POST['pass']==GUI_PASSWORD){
     $_SESSION['user'] = GUI_USERNAME;
     header('Location: index.php');

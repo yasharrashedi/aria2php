@@ -12,7 +12,10 @@ set username and password (needed for login) in config.php file
 
 ![Screentshot](https://raw.githubusercontent.com/yasharrashedi/aria2php/master/screenshot.png "Screentshot")
 
-
+web master config 
+===============================================
+cp config.php webmastconfig.php
+change values youself
 
 known issues
 ===============================================
@@ -22,3 +25,5 @@ Save Session doesn't work although it uses commands described in aria2 documenta
 License
 ===============================================
 MIT License. Refer to the LICENSE file.
+
+
